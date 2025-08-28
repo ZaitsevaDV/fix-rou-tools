@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 import argparse
 
 # default values for argparse
-PATHNAME = 'rou/'
-DAY = '250813'
+PATHNAME = ''
+DAY = '250807'
 TFORM = '%Y%m%d%H%M%S'
 TFORM_CHOICES = ["%y%m%d%H%M%S", "%Y%m%d%H%M%S"]
 
@@ -94,6 +94,8 @@ def process_files(pathname, day, sampling_period):
             
             if all_heights is None:
                 all_heights = block[1].split()[1:]
+            elif block[1].split()[1:] != all_heights:
+                raise ValueError(f"heights mismatch at {time_str}")
             if height_str is None:
                 height_str = block[1]
             
@@ -179,4 +181,4 @@ if __name__ == '__main__':
     parser.add_argument('--sampling', type=int, default=SAMPLING_PERIOD, help=f'Sampling period, sec; default: {SAMPLING_PERIOD}')
     parser.add_argument('--pre', type=str, default=PRE, help=f'Prefix for output file; default: {PRE}')
     args = parser.parse_args()
-    process_files(args.pathname, args.day, args.sampling_period)
+    process_files(args.pathname, args.day, args.sampling)
