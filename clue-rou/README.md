@@ -30,12 +30,18 @@ usage: clueRouFiles.py [-h] [--pathname PATHNAME] [--day DAY] [--tform {%y%m%d%H
 Clue ROU files
 
 options:
+
   -h, --help            show this help message and exit
+
   --pathname PATHNAME   Path to directory files; default: rou/
+
   --day DAY             Day to process; default: 250813
+
   --tform {%y%m%d%H%M%S,%Y%m%d%H%M%S}
                         Time format; default: %Y%m%d%H%M%S
+
   --sampling SAMPLING   Sampling period, sec; default: 3
+
   --pre PRE             Prefix for output file; default: ZSS
 
 
